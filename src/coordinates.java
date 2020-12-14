@@ -69,6 +69,7 @@ public class coordinates {
     result.put("v", v);
     double E = 2 * Math.atan(Math.tan(v / 2) / Math.sqrt((1 + e) / (1 - e)));
     if(t>=PI)E=E*(-1);
+    
     result.put("E", E);
     double M = E - e * Math.sin(E);
     result.put("M", M);
