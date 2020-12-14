@@ -64,12 +64,13 @@ public class coordinates {
     if(t>5.9){
         u=PI-u;
     }
+
     result.put("u", u);
     double v = u - w;
     result.put("v", v);
     double E = 2 * Math.atan(Math.tan(v / 2) / Math.sqrt((1 + e) / (1 - e)));
-    if(t>=PI)E=E*(-1);
-    
+    if(t>=PI)E=2*PI+E;
+
     result.put("E", E);
     double M = E - e * Math.sin(E);
     result.put("M", M);

@@ -13,7 +13,7 @@ public class test {
         double[] x = coordinates.coordinates(i);
         writer.write(x[0] + " " + x[1] + " " + x[2] + "\n");
 
-          System.out.println(coordinates.orbitElemCalc(x,i)+"t=  "+ i+ "\n");
+          System.out.println(coordinates.orbitElemCalc(x,i)+"\n");
 
 
       }
