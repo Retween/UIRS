@@ -36,22 +36,39 @@ public class coordinates {
     x[0] = r * (cos(u) * cos(O) - sin(u) * sin(O) * cos(i));
     x[1] = r * (cos(u) * sin(O) + sin(u) * cos(O) * cos(i));
     x[2] = r * sin(u) * sin(i);
-
+      System.out.print("(r=" + r + ", ");
+      System.out.print("u=" + u + ", ");
+      System.out.print("E=" + E + ", ");
+      System.out.print("v=" + v + ", ");
+      System.out.print("M=" + M + ", ");
+      System.out.println();
     return x;
   }
 
   //Метод, возвращающий HashMap параметров орбиты по входному массиву координат
-  public HashMap<String, Double> orbitElemCalc(double[] x) {
+  public HashMap<String, Double> orbitElemCalc(double[] x, double t) {
 
    HashMap<String, Double> result = new HashMap<>();
 
     double r = sqrt(x[0]*x[0]+x[1]*x[1]+x[2]*x[2]);
     result.put("r", r);
-    double u = x[2]/(r*sin(i));
+    double u = asin(x[2]/(sin(i)*r));
+    if(t<2.7)u=PI-u;
+    else if(t>=2.7)
+    {
+        u=2*PI+u;
+    }
+    if(t>=PI){
+        u=u-2*PI;
+    }
+    if(t>5.9){
+        u=PI-u;
+    }
     result.put("u", u);
     double v = u - w;
     result.put("v", v);
     double E = 2 * Math.atan(Math.tan(v / 2) / Math.sqrt((1 + e) / (1 - e)));
+    if(t>=PI)E=E*(-1);
     result.put("E", E);
     double M = E - e * Math.sin(E);
     result.put("M", M);
