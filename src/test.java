@@ -13,14 +13,8 @@ public class test {
         double[] x = coordinates.coordinates(i);
         writer.write(x[0] + " " + x[1] + " " + x[2] + "\n");
 
-        coordinates.orbitElemCalc(x);
+        System.out.println(coordinates.orbitElemCalc(x));
       }
-    }
-
-    HashMap<String, Double> orbitElem = coordinates
-        .orbitElemCalc(coordinates.coordinates(1.5 * Math.PI));
-    for (Map.Entry<String, Double> entry : orbitElem.entrySet()) {
-      System.out.println(entry.getKey() + ": " + entry.getValue());
     }
   }
 }
